@@ -112,7 +112,7 @@ def zipAudio():
 def sendEmail(email, result_file) : 
     port = 465  # For SSL
     smtp_server = "smtp.gmail.com"
-    sender_email = "vshukla_be20@thapar.edu"  # Enter your address
+    sender_email = "hpandey_be20@thapar.edu"  # Enter your address
     receiver_email = email  # Enter receiver address
 
         # Create a multipart message and set headers
