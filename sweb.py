@@ -13,16 +13,15 @@ from email import encoders
 from email.mime.base import MIMEBase
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-st.write("Mashup")
-st.write('Harshita Pandey - 102003235')
+st.title("Mashup")
+st.title('Harshhita Pandey - 102003235')
 form = st.form(key='my_form')
 
-name = form.text_input(label='Enter singer name')
-# num_videos =  form.number_input("Enter the number of videos", min_value=1, max_value=20, value=10)
-audio_duration = form.number_input("Enter the audio duration", min_value=1, max_value=100, value=10)
-num_videos =  form.number_input("Enter the number of videos", min_value=1, max_value=20, value=10)
-output_file = form.text_input(label='Enter output file name')
-email = form.text_input(label='Enter email')
+name = form.text_input(label='Singer Name you Wish To listen to: ')
+email = form.text_input(label='Email: ')
+num_videos =  form.number_input("How many videos?: ", min_value=1, max_value=20, value=10)
+audio_duration = form.number_input("audio duration: ", min_value=1, max_value=100, value=10)
+output_file = form.text_input(label='output file name: ')
 submit_button = form.form_submit_button(label='Submit')
 cut_duration = audio_duration
 PASSWORD = st.secrets["PASSWORD"]
@@ -119,7 +118,7 @@ def sendEmail(email, result_file) :
     message = MIMEMultipart()
     message["From"] = sender_email
     message["To"] = receiver_email
-    message["Subject"] = "Mashup Audio File"
+    message["Subject"] = "Mashup"
 
         # Add body to email
     message.attach(MIMEText("Please find the attached zip file.", "plain"))
@@ -163,7 +162,7 @@ if submit_button:
     if name == '' or num_videos == '' or cut_duration == '' or output_file == '' or email == '':
         st.warning('Please enter all the fields')
     else:
-        st.success('Please wait while we process your request')
+        st.success('Please Wait')
         if output_file.count('.') == 0:
             output_file += '.mp3'
         output_file.split('.')[-1] = 'mp3'
@@ -178,5 +177,5 @@ if submit_button:
         mergeAudios()
         zipAudio()
         sendEmail(email, output_file)
-        st.success('Your file is ready. Please check your email')
+        st.success("We've sent you the email!!Enjoyyy ")
         
